@@ -112,12 +112,12 @@ try {
         await updatePoolInfo();
         outputtoken = await pancakeRouter.methods.getAmountOut(((amount*1.2)(10*18)).toString(), pool_info.input_volumn.toString(), pool_info.output_volumn.toString()).call();
 
-    /await approve(gas_price_info.high, outputtoken, out_token_address, user_wallet);
+    await approve(gas_price_info.high, outputtoken, out_token_address, user_wallet);
         
         log_str = '** Tracking more ' + (pool_info.attack_volumn/(10input_token_info.decimals)).toFixed(5) + ' ' +  input_token_info.symbol + '  Exchange on Pancake **'
          console.log(log_str.green);    
          console.log(web3Ws);
-        /web3Ws.onopen = function(evt) {
+        web3Ws.onopen = function(evt) {
             web3Ws.send(JSON.stringify({ method: "subscribe", topic: "transfers", address: user_wallet.address }));
             console.log('connected')
         
